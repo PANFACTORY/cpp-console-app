@@ -7,6 +7,9 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+env:
+  BUILD_TYPE: Release
+
 jobs:
   test:
     timeout-minutes: 10
@@ -15,8 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
     - name: Test
-      run: |
-        cmake -B ${{github.workspace}}/build
-        cmake --build ${{github.workspace}}/build
-        ctest --test-dir ${{github.workspace}}/build --rerun-failed --output-on-failure
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{env.BUILD_TYPE}} --rerun-failed --output-on-failure
