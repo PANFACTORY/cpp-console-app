@@ -1,0 +1,6 @@
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 200
+NamespaceIndentation: All
+AlignAfterOpenBracket: BlockIndent
+IncludeBlocks: Preserve
