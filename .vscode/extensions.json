@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "xaver.clang-format",
+        "vadimcn.vscode-lldb",
+        "cs128.cs128-clang-tidy",
+        "cschlosser.doxdocgen",
+        "ms-vscode.cmake-tools"
+    ]
+}
