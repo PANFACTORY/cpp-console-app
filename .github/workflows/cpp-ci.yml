@@ -17,7 +17,6 @@ jobs:
 
     - name: Test
       run: |
-        mkdir build
         cmake -B ${{github.workspace}}/build
         cmake --build ${{github.workspace}}/build
         ctest --test-dir ${{github.workspace}}/build --rerun-failed --output-on-failure
